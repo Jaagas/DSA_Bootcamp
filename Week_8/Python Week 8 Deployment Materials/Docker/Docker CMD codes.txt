@@ -1,0 +1,4 @@
+1. docker build -t dockerapp . - Creating Image
+2. docker run -p 5000:5000 dockerapp - Running Container
+3. docker save -o myimage.tar dockerapp - Saving image to move other machine
+4. docker load -i myimage.tar - Load created image on another machine

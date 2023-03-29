@@ -1,0 +1,119 @@
+---CREATE PROJECT ON SCRAPY---
+
+1. OPEN ANACONDA PROMPT
+2. WRITE : scrapy startproject YOUR-PROJECT-NAME
+3. COPY (C://YOURPROJECTNAME/spider) folder PATH
+4. WRITE : cd PATH
+5. WRITE : scrapy genspider YOUR-SPIDER-NAME YOUR-URL-LINK
+6. OPEN YOUR-SPIDER-NAME.py file on Spyder IDE
+
+
+---SCRAPY SHELL---
+
+7. OPEN ANACONDA PROMPT
+8. WRITE : scrapy shell
+9. WRITE : fetch('YOUR-URL-LINK')
+10. TRY SCRAPY SELECTORS 
+
+---FIX UTF-8 ( Azərbaycan dili simvollar problemli )---
+
+1.open settings.py
+2.last row import : FEED_EXPORT_ENCODING='utf-8'
+
+---SAVING to CSV JSON ON Scrapy ---
+1. OPEN ANACONDA PROMPT
+2. COPY (C://YOURPROJECTNAME/spider) folder PATH
+3. WRITE : cd PATH
+4. WRITE : scrapy crawl YOUR-SPIDER-NAME -o mycsv.csv ( FOR CSV FILE) 
+4. WRITE : scrapy crawl YOUR-SPIDER-NAME -o myjson.json ( FOR Json FILE )
+
+
+---SAVING to CSV file ON Scrapy Other Methods ---
+1.open settings.py
+2.last row import :FEED_FORMAT = "csv"
+		   FEED_URI = "name_of_file.csv"
+	
+3. OPEN ANACONDA PROMPT
+4. COPY (C://YOURPROJECTNAME/spider) folder PATH
+5. WRITE : cd PATH
+6. WRITE : scrapy crawl YOUR-SPIDER-NAME( FOR CSV FILE) 
+
+
+---OTHER NOTES---
+
+. - symbol  for class
+# - symbol for id
+
+
+response.css("img::attr(src)").get() 
+response.css("img").xpath("@src").get()
+response.css("img").attrib["src"] same things
+
+response.css("a::attr(href)").get() 
+response.css("a").xpath("@href").get()
+response.css("a").attrib["href"] same things
+
+Selectors : 
+CSS and Xpath
+
+Xpath 
+//item/title/text()
+
+// -get all elements
+/ - get only child elements
+
+atributlarin qarsina @ isaresi qoyulur ve 
+tagName[@attNAme="value"] sheklinde olur 
+
+delete namepsaces: 
+response.selector.remove_namespaces() - node-lardan qurtulmaq ucun (axtaris bezen neticeler vermir bunu ishledende daha rahat olur )
+
+
+* CHECK XPATH SELECTOR :  Open Chrome - > F12 (Inspect) -> CTRL+F - > write Xpath
+
+ * Disable Javascript Codes !! OPEN CHROME - > F12 (Inspect) -> CTRL+SHIFT+P > write Disable  > Click Disable Javascript
+
+
+
+---- CSS SELECTORS AND FUNCTIONS-----
+response.css(".class::text").extract_first() = find
+response.css(".class::text").extract() = find_all
+
+FUNCTIONS:
+get()
+extract_first()
+getall()
+extract()
+
+Ferqleri odurki  !!!!
+get(default="Tapilmadi")
+qaytara bilir none valuelarda
+
+---- ADVANCED SELECTORS-----
+
+
+
+1. //a[starts-with(@href,"anything")] - text le baslayan funksiya yazdiq Linkinde
+2. //a[ends-with(@href,"anything")] - text le biten funksiya yazdiq Linkinde
+3. //a[contains(@href,"anything")] - icersinde text kecen tapmaq Linkinde
+4. //a[contains(text(),"anything")] - icersinde text kecen tapmaq Textinde
+
+# id -le unique-dir class ise deyil 
+
+//ul[@id="items]/li/text() -butun li-leri secir 
+//ul[@id="items]/li[1]/text() - birinci li-ni secir 
+//ul[@id="items]/li[1 or 4]/text() - 1-den 4 e qeder
+//ul[@id="items]/li[position()=1 or position()=4]/text() - 1 ve 4 u secir ( boyukdur kicikdir de etmek olur ) 
+
+
+
+Parent!
+//p[@id="unique"]/parent::node() - ozunden evvelki parenti secir
+//p[@id="unique"]/anchestor::node() - ozunden evvelki parent tagi ve onunda parent tagi ve onunda.... secir 
+//p[@id="unique"]/anchestor-or-self::node() - hem elementin ozunu secir hemde bu sheyleri :ozunden evvelki parent tagi ve onunda parent tagi ve onunda.... secir 
+
+//div[@id="unique"]/child::node() - ozunun childlarini secir 
+//div[@id="unique"]/descendant::node() - ozunun childlarini secir ve onlarinda childlarini secir 
+
+//div[@id="unique"]/following::node() - ozunu daxil etmeden novbeti gelen taglari goturur 
+

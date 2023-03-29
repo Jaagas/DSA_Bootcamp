@@ -1,0 +1,86 @@
+1  pwd        					# print name of current/working directory
+2  ls         					# list directory contents
+3  ls -a					# list directory contents, including hidden directories 
+4  ls -l					# list directory contents in detail
+5  ls -lS					# list directory contents in detail and arranges for size 
+6  clear					# clears command line outputs
+7  cd         					# change working directory to home directory
+8  cd ..      					# change working directory to parent directory
+9  touch      					# change file timestamps / create file
+10 mkdir      					# make directories
+11 mkdir -p ~/Desktop/folder1/folder2 		# make parent directories as needed
+12 mkdir {a..c}{1..7}                           # make multiple directories
+13 history                                   	# GNU History Library
+14 history >> textfile                        	# append* output of "history" to "textfile"
+15 ls > textfile                              	# add* output of "ls" to "textfile" (if any file content exists, ">" removes content
+16 echo "hello dear people" >> textfile		# print "hello dear people" and append it to "textfile"
+17 rm                                         	# remove files or directories
+18 rm -r                                        # remove directories
+19 rmdir                                        # remove empty directories
+20 find . -name GPL-3				# find path of file or folder named "GPL-3" (searches subdirectories too)
+21 cp /usr/share/common-licenses/GPL-3 .	# copy "/usr/share/common-licenses/GPL-3" to present working directory (".")
+22 head 				        # output the first part of files / default 10 lines
+23 tail				        	# output the last part of files / default 10 lines
+24 tail -30 GPL-3 | head -5			# | is pipe operator, is useful for combining more bash codes, prints top 5 lines of last 30 lines
+25 wc GPL-3					# returns num of lines, words, and characters
+26 grep	"GPL" GPL-3				# print lines that match patterns
+27 history | grep tail				# prints history containing "tail"
+28 sed 's/GNU/GNU_PROJECT/g' GPL-3		# substitute all "GNU" words with "GNU_PROJECT" in given file (GPL-3)
+29 echo "ONE TWO" | sed "s/one/unos/I"		# prints "ONE TWO", then substitute all "one" words with "unos", case insensitive
+30 echo "Welcome To The Bootcamp" | sed 's/\(\b[A-Z]\)/\(\1\)/g'	# makes first letters in paranthesis
+31 sed 's/\(\b[A-Z]\)/\(\1\)/g' GPL-3 | head -3 			# makes first letters in paranthesis and shows top 3 line
+
+# Awk is a scripting language used for manipulating data and generating reports.
+##### before using "awk" code, create text file named "data", insert these into file
+ 
+DS001	90	Python
+DS002	100	R
+DS005	90	SPSS
+DS031	78	Power BI
+DS030	64	Tableau
+DS089	100	Big Data
+DS063	70	Python
+
+32 awk '{print}' data				# prints file content
+33 awk '/Python/ {print}' data			# prints lines containing "Python" word
+34 awk '{print $1, $2}' data			# prints first and second fields in file
+35 awk '{print NR,$0}' data			# prints line numbers and data
+36 awk '{print NR ","$1","$2}' data		# prints line numbers, first and second fields of data, commas between fields
+37 apt-get update				# updates "apt" (package manager)
+38 apt-get install nano				# installs nano ( text editor)
+39 nano 				        # Nano's ANOther editor, inspired by Pico
+40 apt-get update                               # update list of available packages
+41 sudo apt-get install python3             	# install python 3.8 from terminal
+42 python3                                    	# open python command line inside terminal / exit() for exiting python command line
+43 nano bash_script.sh				# create and edit file, named "bash_script.sh" 	
+44 file bash_script.sh				# outputs type of file			 
+45 bash bash_script.sh				# runs "bash_script.sh" 
+46 chmod +x bash_script.sh			# gives executable right to "bash_script.sh"
+47 ./bash_script.sh				# runs "bash_script.sh" as a code
+48 python3 file.py                              # run "file.py" using terminal
+49 adduser newuser				# adds new user
+50 chown newuser /path/to/file			# change file owner and group
+51 wget https://cran.rstudio.com/src/base/R-4/R-4.0.0.tar.gz		# install R from source
+52 tar xf R-4.0.0.tar.gz			# extract tar file
+53 apt-get install cron				# installs cron - scheduled automation tool
+54 cron						# activates cron
+55 crontab -e					# opens crontab - to scheduling file
+56 crontab -l					# lists user cron table
+57 crontab -r					# removes a cron table and all scheduled jobs
+58 sudo mv oldfile.txt newfile.txt		# rename file
+59 ls -l | wc -l				# count number of file
+60 wc -l train.tsv				# count number of line in file
+61 nohup python3 myproject.py &			# run in background
+62 grep -o 'running' sentences.txt | wc -l	# count total number of occurrences
+63 df -h myflder				# folder size
+64 du -sh  sentences.json			# file ize
+65 free -m					# RAM usage
+66 uniq -D duplicate.txt			# show duplicates
+67 grep -cvP '\S' final.txt			# count empty lines
+68 ps aux					# to monitor processes running on your Linux system
+69 ps aux | grep python3			# running python code on your Linux system
+70 sudo chmod 777 folder			# to make a file or folder accessible to everyone
+71 export command=mycommand			# it is used to ensure the environment variables and functions to be passed to child processes.
+72 echo $command				# print variable
+
+73 https://itsfoss.com/recover-deleted-files-linux/      # return deleted files

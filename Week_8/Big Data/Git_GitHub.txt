@@ -1,0 +1,48 @@
+#############################################################
+## Adding SSH (Secure Socket Shell) key to GitHub account  ##
+#############################################################
+
+1. cd ~                                                 ## change directory
+2. ssh-keygen -t ed25519 -C "your_email@example.com"    ## generate ssh keys
+3. eval `ssh-agent -s`                                  ## ensure if ssh works
+4. clip < ~/.ssh/id_ed25519.pub				## copy contents to clipboard
+5.                                                      ## go to github > settings > ssh/gpg keys > add ssh key
+
+https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
+
+
+1. git init						## initiate git in folder
+2. git config --global credential.helper store		## saving your username and email
+2. git config --global user.name "John Doe"		## configure your username
+3. git config --global user.email johndoe@example.com   ## configure your mail
+4. git status						## to view status of git
+5. git add .						## add changes to staging area
+6. git commit -m "commit message"			## commit changes
+7. git reset --soft HEAD~1				## undo last commit
+8. git reset --hard HEAD~1				## remove last changes
+9. git remote add origin https://github.com/...git	## add remote repository
+10. git push -u origin master                           ## push changes to origin (GitHub repository)
+11. git clone https://github.com/...git			## clone (copy/download) remote repository
+12. git pull origin master				## update cloned repository
+13. git branch                                          ## to see branchs
+14. git branch new_branch				## create new_branch
+15. git checkout new_branch                             ## go to new_branch
+16. git merge master new_branch				## merge new_branch to master branch
+17. git branch -d new_branch 				## delete new_branch locally
+18. git push origin --delete new_branch			## delete new_branch remotely
+19. git credential-manager uninstall			## removes stored credentials for a given URL
+20. git credential-manager install			## The Git Credential Manager for Windows (GCM) provides secure Git credential storage for Windows
+
+
+
+Pushing example:
+
+git init .
+git config --global credential.helper store
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+git add .
+git status
+git commit -m "mymessage"
+git remote add origin https://github.com/...git
+git push -u origin master

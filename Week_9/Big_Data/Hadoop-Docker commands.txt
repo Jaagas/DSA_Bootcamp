@@ -1,0 +1,59 @@
+======================================= DOCKER =======================================
+
+## Open Docker
+## Start each container
+## Then open 3 environments(CLI). One of them for Namenode, others for Datanodes
+
+## Connect to docker containers: 
+/bin/bash
+
+## Start Hadoop:
+./start-hadoop.sh			## only in namenode
+
+## Check configuration using 'jps' command	## each node
+
+
+
+======================================= HADOOP =======================================
+
+
+hdfs dfs -ls / 		------------------------	# List all the files/directories for the given hdfs destination path.
+hdfs dfs -ls -d /	------------------------	# Hadoop Directories are listed as plain files. In this case, this command will list
+							# the details of hadoop folder.
+hadoop fs -ls <path> 	------------------------	# List files in the path of the file system
+hadoop fs -mkdir <path>    ---------------------	# Make a directory on the file system
+hadoop fs -put <local-origin> <destination>   ------ 	# Copy a file from the local storage onto file system
+hadoop fs -get <origin> <local-destination>   ------	# Copy a file to the local storage from the file system
+hadoop fs -copyFromLocal <local-origin> <destination> - # Similar to the put command but the source is restricted to a local file reference
+hadoop fs -copyToLocal <origin> <local-destination> --	# Similar to the get command but the destination is restricted to a local file reference
+hadoop fs -moveFromLocal <localsrc> <dst>   ---------	# Similar to put command, except that the source localsrc is deleted after it’s copied.
+hadoop fs -moveToLocal [-crc] <src> <dst>  --------	# Displays a “Not implemented yet” message.
+hdfs dfs -touchz /hadoop3 	-------------------	# Creates a file of zero length at <path> with current time as the
+							# timestamp of that <path>.
+hadoop fs -cat <file> 	   ------------------------	# Copy files to stdout
+hdfs dfsadmin -report 		-----------------	# Find out how much disk space us used, free, under-replicated, etc.
+hdfs dfs -rm -skipTrash /hadoop     ------------	# The -skipTrash option will bypass trash, if enabled, and delete the
+							# specified file(s) immediately
+hdfs dfs -rm -f /hadoop 	---------------		# If the file does not exist, do not display a diagnostic message or
+							# modify the exit status to reflect an error.
+hdfs dfs -rmdir /hadoop1 	----------------	# Delete a directory.
+hdfs dfs -mkdir /hadoop2 	-------------------	# Create a directory in specified HDFS location.
+hdfs dfs -mkdir -f /hadoop2 	------------------	# Create a directory in specified HDFS location. This command does not
+							# fail even if the directory already exists.
+
+
+----Some Examples:
+
+hdfs dfs -mkdir -p /user/root	# create a directory
+nano file.py			
+nano file.txt
+hadoop fs -copyFromLocal file.txt hdfs:/user/root
+hadoop fs -copyFromLocal file.py hdfs:/user/root
+python3 file.py -r hadoop hdfs:///user/root/file.txt > outputfile.txt
+hadoop fs -moveFromLocal outputfile.txt hdfs:/user/root
+
+----More commands for Hadoop:
+https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html#copyFromLocal
+
+----HIVE - Hue
+https://demo.gethue.com/hue/editor?editor=152667
